@@ -45,7 +45,7 @@
                 <parameter name="template">/html/index.html</parameter>
             </renderer>
             <renderer type="HTMLRenderer">
-                <parameter name="template">/html/index.html</parameter>
+                <parameter name="template" >html/default.html</parameter>
             </renderer>
         </renderers>
     </view>
