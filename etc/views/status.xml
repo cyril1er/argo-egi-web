@@ -383,6 +383,7 @@
                 </element-ignore>
             </elements>
 
+
             <elements path="root/group">
                 <element-ignore in="status"></element-ignore>
                 <element-create>sort_by_string(../status,'@timestamp')</element-create>
@@ -403,10 +404,12 @@
             </element>
 
             <elements path="root/group">
-                <element in="status" if="not(preceding-sibling::status)">
+                <element-ignore in="status" if="preceding-sibling::status and date:seconds(@timestamp) &lt; date:seconds($start_date)"></element-ignore>
+                <element in="status" if="not(preceding-sibling::status)" >
                         <attribute in="timestamp">$start_date</attribute>
                 </element>
             </elements>
+
 
 
         </processors>
