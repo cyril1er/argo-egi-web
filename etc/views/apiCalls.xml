@@ -172,7 +172,7 @@
 
         <connector type="HTTPConnector">
             <parameter name="url" eval="concat(property('api.status.url'),$report,'/',upper-case($group_type),
-            '/?start_time=',$start_time,'&amp;end_time=',$end_time)">
+            '?start_time=',$start_time,'&amp;end_time=',$end_time)">
             </parameter>
             <parameter name="certificate" eval="property('certificate.path')"/>
             <parameter name="passphrase" eval="property('certificate.password')"/>
@@ -273,7 +273,7 @@
         <connector type="HTTPConnector">
             <parameter name="url"
                        eval="choose($service='false',
-                       concat(property('api.status.url'),$report,'/',upper-case($group_type),'/',$site,'/services/','?start_time=',$start_time,'&amp;end_time=',$end_time),
+                       concat(property('api.status.url'),$report,'/',upper-case($group_type),'/',$site,'/services','?start_time=',$start_time,'&amp;end_time=',$end_time),
 
                        choose($endpoint='false',
                                 concat(property('api.status.url'),$report,'/',upper-case($group_type),'/',$site,'/services/',$service,'/endpoints?start_time=',$start_time,'&amp;end_time=',$end_time),
@@ -294,6 +294,16 @@
                 <attribute-create out="report">$report</attribute-create>
                 <attribute-create out="start_time">$start_time</attribute-create>
                 <attribute-create out="end_time">$end_time</attribute-create>
+
+                <attribute-create out="url">
+                          choose($service='false',
+                       concat(property('api.status.url'),$report,'/',upper-case($group_type),'/',$site,'/services','?start_time=',$start_time,'&amp;end_time=',$end_time),
+                       choose($endpoint='false',
+                                concat(property('api.status.url'),$report,'/',upper-case($group_type),'/',$site,'/services/',$service,'/endpoints?start_time=',$start_time,'&amp;end_time=',$end_time),
+                                concat(property('api.status.url'),$report,'/',upper-case($group_type),'/',$site,'/services/',$service,'/endpoints/',$endpoint,'/metrics?start_time=',$start_time,'&amp;end_time=',$end_time)
+
+                      ) )
+                </attribute-create>
             </element>
         </processors>
 
