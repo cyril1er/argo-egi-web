@@ -330,17 +330,18 @@
             <category>ADMIN</category>
         </info>
 
+        <argument name="metricsProfileId">0</argument>
         <connector type="XMLConnector">
-            <parameter name="content" eval="view('goc.ServiceFlavours')"></parameter>
+            <parameter name="content" eval="view('metricsProfile')"></parameter>
         </connector>
 
         <processors>
-            <insert match="/results"
+            <insert match="/object"
                     nodes="new_attribute('admin',boolean(view('administratorsList')/admins/admin/CertDN[text()=user()]))
-                     |new_attribute('user',user())">
+                     |new_attribute('user',user()) | new_attribute('metricsProfileId',$metricsProfileId)">
             </insert>
             <!--<element in="results">-->
-            <!--<element-create>view('poems')</element-create>-->
+            <!--<element-create>view('metricsProfile')</element-create>-->
             <!--</element>-->
         </processors>
 
@@ -365,16 +366,16 @@
 
         <argument name="profileId"></argument>
         <connector type="XMLConnector">
-            <parameter name="content" eval="view('goc.ServiceFlavours')"></parameter>
+            <parameter name="content" eval="view('metricsProfile')"></parameter>
         </connector>
 
         <processors>
-            <insert match="/results"
+            <insert match="/object"
                     nodes="new_attribute('admin',boolean(view('administratorsList')/admins/admin/CertDN[text()=user()]))
                      |new_attribute('user',user())">
             </insert>
 
-            <element in="results">
+            <element in="object">
                 <attribute-create out="mode">'edition'</attribute-create>
                 <element-create>view('aggregation_profiles')/object/data/item/object[@id=$profileId]</element-create>
             </element>
