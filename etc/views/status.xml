@@ -34,6 +34,7 @@
             <description>Site Reports - cache Rotated</description>
         </info>
         <argument name="delete" eval="false()"></argument>
+        <argument name="report">Critical</argument>
 
         <connector type="XMLConnector">
             <parameter name="content" eval="new_element('root')"></parameter>
@@ -41,9 +42,9 @@
 
         <processors>
             <insert match="/root" nodes="
-            view('api.status.rotating.caches',entry('group_type','sites')|entry('diff','0')|entry('delete',$delete))
-            |view('api.status.rotating.caches',entry('group_type','sites')|entry('diff','1')|entry('delete',$delete))
-            |view('api.status.rotating.caches',entry('group_type','sites')|entry('diff','2')|entry('delete',$delete))">
+            view('api.status.rotating.caches',entry('group_type','sites')|entry('diff','0')|entry('report',$report)|entry('delete',$delete))
+            |view('api.status.rotating.caches',entry('group_type','sites')|entry('diff','1')|entry('report',$report)|entry('delete',$delete))
+            |view('api.status.rotating.caches',entry('group_type','sites')|entry('diff','2')|entry('report',$report)|entry('delete',$delete))">
 
             </insert>
         </processors>
