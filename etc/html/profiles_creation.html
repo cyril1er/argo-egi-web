@@ -162,7 +162,9 @@
                 <div class="box-content">
                     <div  id="listProfile" style="height:400px;overflow:auto">
                         <input tpl:if="/object/@mode='edition'"  class="hidden" name="profileId" value="{{/object/object/@id}}"/>
+
                         <div tpl:foreach="/object/object/groups/item/object">
+
                         <div  class="col-xs-3 box group" id="group_update{{position()}}" name="group" style="min-height:90px">
                             <button class="btn btn-primary fa fa-times-circle" id="close_group_update{{position()}}" onclick="javascript:closeGroup(this.id)" style="display: block;">
 
@@ -171,18 +173,20 @@
                                 <li tpl:foreach="services/item/object" name="{{@name}}">{{@name}}</li>
                             </ul>
 
-                            <input class="hidden" name="group_update{{position()}}" type="text"
-                                tpl:call-function="concatvalues"/>
+                            <input class="hidden" name="group_{{@name}}" type="text"
+                                tpl:call-function="concatvalues" tpl:with-param.position="position()"/>
 
                             <xsl:template name="concatvalues" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+                                <xsl:param name="position"></xsl:param>
                                 <xsl:attribute name="value">
-                                    <xsl:for-each select="/object/object/groups/item/object/services/item/object"><xsl:value-of select="@name"></xsl:value-of><xsl:if test='position()!=last()'>,</xsl:if></xsl:for-each>
+                                    <xsl:for-each select="/object/object/groups/item[position()=$position]/object/services/item/object"><xsl:value-of select="@name"></xsl:value-of><xsl:if test='position()!=last()'>,</xsl:if></xsl:for-each>
                                 </xsl:attribute>
                                 </xsl:template>
 
                         </div>
                             <div class="col-xs-1" id="separator_group1"><code>AND</code></div>
                         </div>
+
 
                     </div>
                 </div>
