@@ -5,10 +5,7 @@
         xmlns:str="http://exslt.org/strings"
         xmlns:e="http://software.in2p3.fr/lavoisier/entries.xsd">
 
-    <authenticators name="AuthenticatedUsers">
-        <!--<authenticator type="X509Authenticator"  authorized="view('administratorsList')/admins/admin/DN[text()=user()]"/>-->
-        <authenticator type="X509Authenticator" authorized="true()"/>
-    </authenticators>
+
 
 
     <view name="listParameters">
@@ -311,6 +308,8 @@
         </processors>
 
 
+
+
         <renderers>
 
             <renderer type="DefaultRenderer">
@@ -369,6 +368,7 @@
             <parameter name="content" eval="view('metricsProfile')"></parameter>
         </connector>
 
+
         <processors>
             <insert match="/object"
                     nodes="new_attribute('admin',boolean(view('administratorsList')/admins/admin/CertDN[text()=user()]))
@@ -411,10 +411,11 @@
 
             <parameter name="header">
                 <entry key="x-api-key" eval="property('argo.api.key')"></entry>
-                <entry key="Accept">application/xml</entry>
+                <entry key="Accept">application/json</entry>
             </parameter>
         </connector>
 
+        <serializer type="JSONStreamSerializer"></serializer>
 
         <processors>
             <element>
@@ -452,7 +453,7 @@
                 <entry key="Content-Type">application/json</entry>
             </parameter>
         </connector>
-
+        <serializer type="JSONStreamSerializer"></serializer>
         <processors>
             <element>
                 <element-create>view('triggerProfileList')/null</element-create>
@@ -492,7 +493,7 @@
                 <entry key="Content-Type">application/json</entry>
             </parameter>
         </connector>
-
+        <serializer type="JSONStreamSerializer"></serializer>
         <processors>
             <element>
                 <element-create>view('triggerProfileList')/null</element-create>
@@ -512,5 +513,20 @@
 
     </view>
 
+    <view name="testJson">
+        <connector type="FileConnector">
+            <parameter name="path">test.json</parameter>
+        </connector>
+
+        <serializer type="JSONStreamSerializer"></serializer>
+    </view>
+
+    <view name="testJson2">
+        <connector type="FileConnector">
+            <parameter name="path">test2.json</parameter>
+        </connector>
+
+        <serializer type="JSONStreamSerializer"></serializer>
+    </view>
 
 </config>

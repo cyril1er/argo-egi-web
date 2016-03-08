@@ -447,7 +447,13 @@ node16.datagrid.cea.fr/org.nordugrid.ARC-CE-ARIS?exec_time=2015-06-01T00:01:20Z'
                 <parameter name="hours">4</parameter>
             </trigger>
             <trigger type="ViewNotifiedTrigger"/>
-            <trigger type="ViewCreatedTrigger"/>
+
+            <trigger type="DependencyRefreshedTrigger">
+                    <parameter name="views">
+                        <entry>triggerProfileList</entry>
+                    </parameter>
+            </trigger>
+
         </cache>
 
     </view>
