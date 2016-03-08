@@ -4,8 +4,8 @@
 
 
         <category link="/lavoisier/status_report-site?accept=html" icon="fa fa-home"> Site Status</category>
-        <category link="/lavoisier/status_report-site?report=Cloud&amp;accept=html" icon="fa fa-cloud-upload"> Cloud Status</category>
-        <category link="/lavoisier/status_report-site?report=Critical-Fedcloud&amp;accept=html" icon="fa fa-cloud"> Cloud Critical Status</category>
+        <category link="/lavoisier/status_report-site?report=Cloud&amp;accept=html" icon="fa fa-cloud"> Cloud Status</category>
+        <category link="/lavoisier/status_report-site?report=Critical-Fedcloud&amp;accept=html" icon="fa fa-cloud-upload"> Cloud Critical Status</category>
         <category link="/lavoisier/status_report-site?report=OPS-MONITOR-Critical&amp;accept=html" icon="fa fa-star"> Opsmon Status</category>
         <category link="/lavoisier/status_report-form?accept=html" icon="fa fa-list"> Customized Report</category>
 
