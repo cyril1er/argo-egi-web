@@ -82,7 +82,7 @@ if NOT "%CLASSPATH_PREFIX%" == "" set CLASSPATH=%CLASSPATH_PREFIX%;%CLASSPATH%
 @REM Reaching here means variables are defined and arguments have been captured
 :endInit
 
-%JAVACMD% %JAVA_OPTS% -Dlavoisier.configuration=lavoisier-config.xml -classpath %CLASSPATH% -Dapp.name="lavoisier-start-console" -Dapp.repo="%REPO%" -Dapp.home="%BASEDIR%" -Dbasedir="%BASEDIR%" fr.in2p3.lavoisier.command.StartServer %CMD_LINE_ARGS%
+%JAVACMD% %JAVA_OPTS% -Dlavoisier.configuration=lavoisier-config.xml -classpath %CLASSPATH% -Dapp.name="lavoisier-post-install" -Dapp.repo="%REPO%" -Dapp.home="%BASEDIR%" -Dbasedir="%BASEDIR%" fr.in2p3.lavoisier.command.PostInstall %CMD_LINE_ARGS%
 if %ERRORLEVEL% NEQ 0 goto error
 goto end
 

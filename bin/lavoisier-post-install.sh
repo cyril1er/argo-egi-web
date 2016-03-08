@@ -119,10 +119,10 @@ fi
 
 exec "$JAVACMD" $JAVA_OPTS -Dlavoisier.configuration=lavoisier-config.xml \
   -classpath "$CLASSPATH" \
-  -Dapp.name="jmx-attribute" \
+  -Dapp.name="lavoisier-post-install" \
   -Dapp.pid="$$" \
   -Dapp.repo="$REPO" \
   -Dapp.home="$BASEDIR" \
   -Dbasedir="$BASEDIR" \
-  fr.in2p3.lavoisier.command.JMXAttribute \
+  fr.in2p3.lavoisier.command.PostInstall \
   "$@"
