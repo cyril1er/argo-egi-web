@@ -285,7 +285,7 @@
             <insert match="/e:entries"  nodes="new_attribute('view','ngi_reports')"></insert>
             <insert match="/e:entries"  nodes="new_attribute('related_view','ngi_ar')"></insert>
             <insert match="/e:entries"  nodes="new_attribute('ngi','all')"></insert>
-            <insert match="/e:entries"  nodes="new_attribute('report','Critical')"></insert>
+            <insert match="/e:entries"  nodes="new_attribute('report',$report)"></insert>
 
 
 
@@ -757,7 +757,7 @@
             <insert match="/e:entries"  nodes="new_attribute('view','site_reports')"></insert>
             <insert match="/e:entries"  nodes="new_attribute('ngi',$ngi)"></insert>
             <insert match="/e:entries"  nodes="new_attribute('related_view','site_ar')"></insert>
-            <insert match="/e:entries"  nodes="new_attribute('report','Critical')"></insert>
+            <insert match="/e:entries"  nodes="new_attribute('report',$report)"></insert>
         </processors>
 
         <pre-renderers>
